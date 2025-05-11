@@ -8,7 +8,10 @@ import { Session } from "next-auth";
 export default function Header({ session }: { session: Session | null }) {
   return (
     <header className="p-4 bg-gray-100 flex justify-between items-center">
-      <Link href="/">ホーム</Link>
+      <div className="flex gap-4 items-center">
+        <Link href="/">ホーム</Link>
+        <Link href="/carte" className="text-blue-500">訪問記録</Link>
+      </div>
       {session ? (
         <div className="flex gap-4 items-center">
           <span>{session.user?.name} さん</span>
@@ -19,6 +22,6 @@ export default function Header({ session }: { session: Session | null }) {
       ) : (
         <Link href="/login">ログイン</Link>
       )}
-  </header>
+    </header>
   );
 }
