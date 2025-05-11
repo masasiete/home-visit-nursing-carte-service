@@ -3,7 +3,9 @@
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 
-export default function Header({ session }: { session: any }) {
+import { Session } from "next-auth";
+
+export default function Header({ session }: { session: Session | null }) {
   return (
     <header className="p-4 bg-gray-100 flex justify-between items-center">
       <Link href="/">ホーム</Link>
