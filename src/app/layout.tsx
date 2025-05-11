@@ -1,6 +1,6 @@
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import Header from "@/components/Header";
 
 export default async function RootLayout({
