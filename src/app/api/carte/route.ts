@@ -4,6 +4,20 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
+export async function GET() {
+  try {
+    const cartes = await prisma.carte.findMany({
+      orderBy: {
+        visitedAt: 'desc'
+      }
+    });
+    return NextResponse.json(cartes);
+  } catch (error) {
+    console.error("Error fetching cartes:", error);
+    return NextResponse.json({ error: "エラーが発生しました" }, { status: 500 });
+  }
+}
+
 export async function POST(req: Request) {
   const body = await req.json();
 
