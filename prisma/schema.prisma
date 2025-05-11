@@ -10,6 +10,16 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model Carte {
+  id          Int      @id @default(autoincrement())
+  patient     String
+  visitedAt   DateTime
+  nextVisitAt DateTime?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
 }
